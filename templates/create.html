@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Create Entry</title>
+</head>
+<body>
+    <h1>Create Journal Entry</h1>
+
+    <p>Enter a title and your journal content. Both fields are required.</p>
+
+    <form method="POST" id="entryForm">
+        <label for="title">Title</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="content">Content</label><br>
+        <textarea id="content" name="content" rows="10" cols="50" required></textarea><br><br>
+
+        <button type="submit">Save Entry</button>
+    </form>
+
+     <br>
+
+    <a href="/">Back to Journal Entries</a>
+
+
+<script>
+    let formChanged = false;
+
+    const form = document.getElementById("entryForm");
+
+    form.addEventListener("input", function() {
+        formChanged = true;
+    });
+
+    form.addEventListener("submit", function() {
+        formChanged = false;
+    });
+
+    window.addEventListener("beforeunload", function(event) {
+        if (formChanged) {
+            event.preventDefault();
+            event.returnValue = "";
+        }
+    });
+</script>
+
+</body>
+</html>

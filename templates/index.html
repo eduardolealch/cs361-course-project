@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>Lens of Edu</title>
+</head>
+<body>
+    <h1>Lens of Edu</h1>
+
+    <p>Lens of Edu helps you document lessons you learn and revisit them later.
+    Create journal entries, browse previous entries, and open an entry to read the full content.
+    </p>
+
+    <h2>Your Journal Entries</h2>
+    <a class="button" href="/create">Create New Entry</a>
+
+
+
+    {% for entry in entries %}
+
+    <div class="entry">
+    <h3>
+        <a href="/entry/{{ entry.id }}">
+            {{ entry.title }}
+        </a>
+    </h3>
+    <p>{{ entry["content"] }}</p>
+    <a href="/entry/{{ entry['id'] }}">View Entry</a>
+
+    </div>
+
+    {% else %}
+
+    <p>No journal entries yet.</p>
+
+    {% endfor %}
+
+</body>
+</html>

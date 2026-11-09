@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <title>{{ entry["title"] }}</title>
+</head>
+<body>
+    <h1>{{ entry["title"] }}</h1>
+
+    <p>{{ entry["content"] }}</p>
+
+    <a href="/">Back to Journal Entry</a>
+
+</body>
+</html>
